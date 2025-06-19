@@ -17,8 +17,6 @@ module.exports.getByFilters = async (req, res, next) => {
     }
 };
 
-// --- Resto de controladores ---
-
 module.exports.create = async (req, res, next) => {
     const id = req.user._id;
     const data = req.body;

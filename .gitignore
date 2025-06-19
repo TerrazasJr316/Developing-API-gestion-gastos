@@ -1,4 +1,2 @@
-backend/controllers/transaction.controller.js
-backend/routes/transaction.routes.js
-backend/
-frontend/
+backend/node_modules
+backend/mongodb

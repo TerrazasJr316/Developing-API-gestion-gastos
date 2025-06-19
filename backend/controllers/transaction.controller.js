@@ -1,10 +1,7 @@
 const TransactionService = require("../service/transaction.service");
 
-/**
- * ANOTACIÓN: Nuevo controlador para la ruta /filter.
- * Recoge los filtros del objeto `req.query` y los pasa al servicio unificado.
- * Por ejemplo, si la URL es /transaction/filter?type=Ingreso&date=2025-06-18,
- * req.query será { type: 'Ingreso', date: '2025-06-18' }.
+/*
+Recoge los filtros del objeto `req.query` y los pasa al servicio unificado.
  */
 module.exports.getByFilters = async (req, res, next) => {
     const id = req.user._id;

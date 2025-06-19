@@ -1,9 +1,15 @@
 import React from 'react';
 
-const Button = ({text}) => {
+const Button = ({ text, onClick, type = "submit" }) => {
   return (
-    <button className="w-full bg-emerald-400 rounded py-2 hover:bg-emerald-600 cursor-pointer">{text}</button>
-  )
-}
+    <button
+      type={type}
+      onClick={onClick}
+      className="w-full bg-emerald-600 text-white p-2 rounded hover:bg-emerald-700 transition-colors duration-300"
+    >
+      {text}
+    </button>
+  );
+};
 
-export default Button
+export default Button;

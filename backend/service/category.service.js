@@ -8,8 +8,3 @@ module.exports.create = async(name,userId)=>{
 module.exports.getAll = async(userId)=>{
     return await CategoryModel.find({user:userId});
 }
-
-
-
-
-

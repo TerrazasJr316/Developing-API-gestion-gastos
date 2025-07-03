@@ -1,8 +1,5 @@
 const TransactionService = require("../service/transaction.service");
 
-/*
-Recoge los filtros del objeto `req.query` y los pasa al servicio unificado.
- */
 module.exports.getByFilters = async (req, res, next) => {
     const id = req.user._id;
     const filters = req.query; 

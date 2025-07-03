@@ -27,8 +27,8 @@ const Categorias = () => {
         if (!nombreCategoria.trim()) return;
         try {
             await apiClient.post('/category', { name: nombreCategoria });
-            setNombreCategoria(''); // Limpiar input
-            fetchCategorias(); // Volver a cargar las categorías
+            setNombreCategoria('');
+            fetchCategorias();
         } catch (error) {
             console.error("Error al crear la categoría:", error);
         }

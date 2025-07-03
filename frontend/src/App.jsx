@@ -8,21 +8,19 @@ import { logout } from "./js/formularioLogin";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  // ANOTACIÓN: La ruta ahora se basa en la URL para un enrutamiento más robusto.
   const [ruta, setRuta] = useState(window.location.pathname);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       setIsAuthenticated(true);
-      // Si está autenticado y en la página de login, redirige al dashboard.
       if (ruta === "/") {
         setRuta("/dashboard");
       }
     } else {
-      setRuta("/"); // Si no hay token, fuerza la ruta de login.
+      setRuta("/");
     }
-  }, []); // El array vacío asegura que se ejecute solo una vez al montar el componente.
+  }, []);
 
   const handleSetRuta = (nuevaRuta) => {
     if (nuevaRuta === "/") {
@@ -32,7 +30,6 @@ const App = () => {
     setRuta(nuevaRuta);
   };
 
-  // Función para renderizar el componente correcto basado en la ruta
   const renderContent = () => {
     if (!isAuthenticated) {
       return <Form />;
@@ -45,7 +42,7 @@ const App = () => {
       case "/movimientos":
         return <Movimientos />;
       default:
-        return <Dashboard />; // Redirigir al dashboard por defecto si la ruta es desconocida
+        return <Dashboard />;
     }
   };
 

@@ -8,14 +8,12 @@ const Form = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // Estados para manejar la retroalimentación al usuario
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleFormSwitch = () => {
     setIsRegister(!isRegister);
-    // Limpiar estados al cambiar de formulario
     setError('');
     setSuccessMessage('');
     setEmail('');
@@ -24,34 +22,21 @@ const Form = () => {
 
   const manejaFormulario = async (e) => {
     e.preventDefault();
-    // Limpiar mensajes previos antes de una nueva solicitud
     setError('');
     setSuccessMessage('');
     setLoading(true);
 
     try {
       if (isRegister) {
-        // --- Lógica de Registro ---
         await register(email, password);
-        // ANOTACIÓN 1: Experiencia de usuario mejorada.
-        // En lugar de un 'alert', mostramos un mensaje de éxito y cambiamos
-        // automáticamente al formulario de login para que el usuario pueda ingresar.
         setSuccessMessage('¡Registro exitoso! Ahora puedes iniciar sesión.');
-        setIsRegister(false); // Cambia al modo "Iniciar Sesión"
-        setPassword(''); // Limpia la contraseña por seguridad
+        setIsRegister(false);
+        setPassword('');
       } else {
-        // --- Lógica de Login ---
         await login(email, password);
-        // ANOTACIÓN 2: Navegación correcta.
-        // Forzamos un reload para que el componente principal (App.jsx)
-        // detecte el nuevo token en localStorage y redirija al dashboard.
-        // Esta es una solución funcional. Una más avanzada sería usar React Context o Zustand.
         window.location.reload(); 
       }
     } catch (err) {
-      // ANOTACIÓN 3: Manejo de errores del backend.
-      // El error que lanzamos desde el backend (`error.response.data.message`)
-      // se captura aquí y se muestra al usuario.
       setError(err.message || 'Ocurrió un error inesperado. Inténtalo de nuevo.');
     } finally {
       setLoading(false);
@@ -70,7 +55,7 @@ const Form = () => {
         </span>
       </p>
       
-      {/* Mensajes de error y éxito */}
+      {}
       {error && <p className="text-red-400 bg-red-900/60 p-3 rounded-md w-full text-center font-semibold animate-pulse">{error}</p>}
       {successMessage && <p className="text-green-300 bg-green-900/60 p-3 rounded-md w-full text-center font-semibold">{successMessage}</p>}
 

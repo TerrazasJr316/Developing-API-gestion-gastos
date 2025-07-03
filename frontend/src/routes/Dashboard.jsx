@@ -9,7 +9,6 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        // ANOTACIÓN: Ahora llamamos a la ruta específica y optimizada '/transaction/recent'.
         const response = await apiClient.get('/transaction/recent');
         setTransactions(response.data);
       } catch (error) {

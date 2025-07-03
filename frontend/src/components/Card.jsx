@@ -1,12 +1,10 @@
 import { CircleArrowDown, CircleArrowUp } from "lucide-react";
 
-// ANOTACIÓN: El componente ahora recibe todos los datos de la transacción como props.
 const Card = ({ transaction }) => {
   const { type, description, category, amount, date } = transaction;
   const isIncome = type === "Ingreso";
   const color = isIncome ? "emerald" : "red";
   
-  // Formatear la fecha a un formato legible
   const formattedDate = new Date(date).toLocaleDateString('es-ES', {
     day: '2-digit',
     month: '2-digit',
@@ -20,7 +18,7 @@ const Card = ({ transaction }) => {
           {isIncome ? <CircleArrowUp size={35} strokeWidth={3}/> : <CircleArrowDown size={35} strokeWidth={3}/>}
           {description || "Sin descripción"}
         </p>
-        {/* Asumimos que la categoría viene como un objeto con un 'name' */}
+        {}
         <p className="text-sm text-stone-300 mt-1">{category?.name || "Sin categoría"}</p>
       </div>
       <div className="text-right">
